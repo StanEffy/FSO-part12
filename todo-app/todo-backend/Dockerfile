@@ -2,10 +2,14 @@ FROM node:16
 
 WORKDIR /usr/src/app
 
-COPY . .
+COPY --chown=node:node . .
 
-RUN npm install
+RUN npm ci
 
-CMD npm start
+ENV DEBUG=todo-backend:*
+
+USER node
+
+CMD ["npm", "start"]
 
 EXPOSE 3000
