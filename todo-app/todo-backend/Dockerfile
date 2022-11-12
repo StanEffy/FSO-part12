@@ -2,14 +2,12 @@ FROM node:16
 
 WORKDIR /usr/src/app
 
-COPY --chown=node:node . .
+COPY . .
 
 RUN npm ci
 
-ENV DEBUG=todo-backend:*
+ENV DEBUG=playground:*
 
 USER node
 
-CMD ["npm", "start"]
-
-EXPOSE 3000
+CMD npm start
